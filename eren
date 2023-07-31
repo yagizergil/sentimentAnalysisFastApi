@@ -1,0 +1,278 @@
+import React from "react";
+import "./index.css";
+
+function App() {
+  const sentiment = {
+    positive: 92,
+    negative: 6,
+    neutral: 2,
+  };
+  const pos = sentiment.positive;
+  const neg = sentiment.negative;
+  const neu = sentiment.neutral;
+
+  const maxPercentage = Math.max(pos, neg, neu);
+
+  console.log("MaxPercentage", maxPercentage);
+  // console.log(dgr.sort(function(a,b){return a - b}).reverse())
+
+  let classAfterResult;
+
+  if (maxPercentage === pos) {
+    classAfterResult = "pstv";
+  } else if (maxPercentage === neg) {
+    classAfterResult = "ngtv";
+  } else {
+    classAfterResult = "neutr";
+  }
+let posAnm ;
+let negAnm ;
+let neuAnm ;
+if(maxPercentage === pos){
+  posAnm = "maxPercentageAnimation"
+}else if(maxPercentage === neg){
+  negAnm ="maxPercentageAnimation"
+}else{
+  neuAnm= "maxPercentageAnimation"
+}
+  return (
+    <div className="container">
+      <div className={`modal ${classAfterResult}`}>
+        <h1 className="article">Algı Ölçer</h1>
+        <div className="modalInner">
+          <form className="flex flex-col flex-1 gap-5">
+            <textarea placeholder="text giriniz" rows={10} cols={10}/>
+          </form>
+          <div className="boxContainer">
+            <div className={`box positive ${posAnm}`}>
+              <h1>Positive</h1>
+              <br />
+              ~~%{sentiment.positive}~~
+            </div>
+            <div className={`box neutral ${neuAnm}`}>
+              <h1>neutral</h1>
+              <br />
+              ~~%{sentiment.neutral}~~
+            </div>
+            <div className={`box negative ${negAnm}`}>
+              <h1>Negative</h1>
+              <br />
+              ~~%{sentiment.negative}~~
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+---------------------------------------------
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  padding: 3rem;
+}
+.container {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  background-color: aqua;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+@media screen and (min-width: 1200px) {
+  body {
+    align-items: center;
+  }
+  .container {
+  }
+}
+.article {
+  border-bottom: 2px solid white;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+}
+.leftSide {
+  width: 50%;
+  display: flex;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 2px solid white;
+  flex-direction: column;
+  gap: 1rem;
+}
+.rightSide {
+  border: 2px solid white;
+  display: flex;
+  width: 50%;
+  padding: 1rem;
+  border-radius: 10px;
+  flex-direction: column;
+}
+
+textarea {
+  padding: 10px;
+  outline: none;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+}
+.leftRight {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.analizButton {
+  background-color: blue;
+  width: 130px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+}
+.smallArticle {
+  text-align: center;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.resultsHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 3rem;
+  gap: 1rem;
+}
+.resultsHeader div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  padding: 0.6rem 0;
+}
+.copyright {
+  width: 100%;
+  border-top: 2px solid #fff;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 1rem;
+}
+---------------------------------------------
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  padding: 2rem 3rem;
+  background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/03/Photo-image-dark-wallpaper.png);
+  background-size: cover;
+}
+.container {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  background-color: aqua;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+@media screen and (min-width: 1200px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  .container {
+    border: 1px solid #fff;
+    width: 1400px;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+  }
+}
+.article {
+  border-bottom: 2px solid white;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+}
+.leftSide {
+  width: 50%;
+  display: flex;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 2px solid white;
+  flex-direction: column;
+  gap: 1rem;
+}
+.rightSide {
+  border: 2px solid white;
+  display: flex;
+  width: 50%;
+  padding: 1rem;
+  border-radius: 10px;
+  flex-direction: column;
+}
+
+textarea {
+  padding: 10px;
+  outline: none;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+}
+.leftRight {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.analizButton {
+  background-color: blue;
+  width: 130px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+}
+.smallArticle {
+  text-align: center;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.resultsHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 3rem;
+  gap: 1rem;
+}
+.resultsHeader div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  padding: 0.6rem 0;
+}
+.copyright {
+  width: 100%;
+  border-top: 2px solid #fff;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 1rem;
+}
